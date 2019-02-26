@@ -1,6 +1,9 @@
 {
   "username": "admin",
   "password": "secret",
+  "cache": {
+    "maxAge": 0
+  },
   "#userAuth": {
       "username": "user",
       "password": "secret"
@@ -29,7 +32,8 @@
     "distribute-by-decadal",
     "distribute-by-interval",
     "distinct-ISO3166-1-alpha3-from",
-    "distinct-ISO3166-1-alpha2-from"
+    "distinct-ISO3166-1-alpha2-from",
+    "teeftfr"
   ],
   "loaders": [
     "csv",
