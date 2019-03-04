@@ -34,6 +34,7 @@
     "distinct-ISO3166-1-alpha3-from",
     "distinct-ISO3166-1-alpha2-from",
     "teeftfr",
+    "teeftfr-specificity",
     "teeftfr-specificity-graph"
   ],
   "loaders": [
