@@ -36,7 +36,7 @@ import SearchResultList from './SearchResultList';
 import SearchResultSort from './SearchResultSort';
 import stylesToClassname from '../../lib/stylesToClassName';
 import ExportButton from '../ExportButton';
-import SearchStats from './SearchStats';
+import Stats from '../Stats';
 
 const styles = stylesToClassname(
     {
@@ -350,7 +350,7 @@ class Search extends Component {
                         )}
                     >
                         <div className={styles.advancedTopBar}>
-                            {(everythingIsOk || noResults) && <SearchStats />}
+                            {(everythingIsOk || noResults) && <Stats />}
                         </div>
                     </div>
                 </div>

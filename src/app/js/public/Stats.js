@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
 import translate from 'redux-polyglot/translate';
 
 import { polyglot as polyglotPropTypes } from '../propTypes';
+import { fromDataset } from './selectors';
 
 const styles = {
     nb: {
@@ -31,4 +34,9 @@ StatsComponent.propTypes = {
     p: polyglotPropTypes.isRequired,
 };
 
-export default translate()(StatsComponent);
+const mapStateToProps = state => ({
+    currentNbResources: fromDataset.getDatasetTotal(state),
+    nbResources: fromDataset.getDatasetFullTotal(state),
+});
+
+export default compose(connect(mapStateToProps), translate)(StatsComponent);
