@@ -160,11 +160,9 @@ class Search extends Component {
 
     UNSAFE_componentWillMount() {
         const {
-            searchQuery,
             search,
             results,
             preLoadPublication,
-            withDataset,
             datasetSearchTerm,
             datasetFacetsValues,
             datasetAppliedFacets,
@@ -173,7 +171,7 @@ class Search extends Component {
             setFacets,
         } = this.props;
 
-        if (withDataset) {
+        if (!results || results.length === 0) {
             setFacets({
                 facetsValues: datasetFacetsValues,
                 appliedFacets: datasetAppliedFacets,
@@ -182,9 +180,6 @@ class Search extends Component {
             });
             preLoadPublication();
             search({ query: datasetSearchTerm || '' });
-        } else if (!results || results.length === 0) {
-            preLoadPublication();
-            search({ query: searchQuery || '' });
         }
 
         setTimeout(() => {
@@ -265,7 +260,7 @@ class Search extends Component {
     render() {
         const { bufferQuery, opening, showFacets } = this.state;
         const {
-            searchQuery,
+            datasetSearchTerm,
             sortBy,
             sortDir,
             loading,
@@ -309,7 +304,7 @@ class Search extends Component {
                             value={
                                 (bufferQuery !== null
                                     ? bufferQuery
-                                    : searchQuery) || ''
+                                    : datasetSearchTerm) || ''
                             }
                             underlineStyle={muiStyles.searchBarUnderline}
                             underlineFocusStyle={muiStyles.searchBarUnderline}
@@ -414,7 +409,6 @@ class Search extends Component {
 
 Search.propTypes = {
     search: PropTypes.func.isRequired,
-    searchQuery: PropTypes.string,
     sort: PropTypes.func.isRequired,
     sortBy: PropTypes.string.isRequired,
     sortDir: PropTypes.oneOf(['ASC', 'DESC']).isRequired,
@@ -456,7 +450,7 @@ Search.propTypes = {
 };
 
 Search.defaultProps = {
-    searchQuery: null,
+    datasetSearchTerm: null,
 };
 
 const mapStateToProps = state => {
@@ -468,7 +462,6 @@ const mapStateToProps = state => {
         fieldNames: fromSearch.getFieldNames(state),
         fields: fromFields.getFields(state),
         total: fromSearch.getTotal(state),
-        searchQuery: fromSearch.getQuery(state),
         sortBy,
         sortDir,
         datasetSearchTerm: fromDataset.getFilter(state),

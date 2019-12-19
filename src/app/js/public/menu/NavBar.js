@@ -215,7 +215,7 @@ export const NavBar = ({
                 </div>
             </nav>
             <Drawer status={searchDrawer} onClose={toggleSearch}>
-                <Search withFacets={hasFacetFields} withDataset={search} />
+                <Search withFacets={hasFacetFields} />
             </Drawer>
             <Drawer status={graphDrawer} onClose={toggleGraph}>
                 <GraphSummary />
