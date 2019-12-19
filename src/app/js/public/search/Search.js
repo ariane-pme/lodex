@@ -30,7 +30,7 @@ import { fromFields } from '../../sharedSelectors';
 import { fromSearch, fromDataset } from '../selectors';
 import theme from '../../theme';
 import AdminOnlyAlert from '../../lib/components/AdminOnlyAlert';
-import AppliedFacetList from './AppliedSearchFacetList';
+import AppliedFacetList from '../dataset/AppliedDatasetFacetList';
 import Facets from './Facets';
 import SearchResultList from './SearchResultList';
 import SearchResultSort from './SearchResultSort';
